@@ -39,6 +39,54 @@
         <div id="data-container"></div>
 
         <script>
+        $(document).ready(function () {
+
+        $('#form-id').on('submit', function (e) {
+      e.preventDefault();
+      const firstName = $('#firstName').val();
+      const lastName = $('#lastName').val();
+
+       const data = {
+           firstName,
+          lastName,
+       }
+       $.ajax({
+           url: `http://localhost:8888/users`,
+            type: "POST",
+         data: data,
+          dataType: "json",
+            success: function (data) {
+             console.log(data)
+             window.location.replace("users-view");
+          },
+          error: function (data){
+              console.log(data.responseJSON)
+              $('#firstName-error').html('')
+             $('#lastName-error').html('')
+              $('#firstName').removeClass('error-border')
+              $('#lastName').removeClass('error-border')
+               if (data.responseJSON?.requiredFirstName) {
+                    $('#firstName').addClass('error-border')
+                    $('#firstName-error').append(` <span class='error-text'>${data.responseJSON?.requiredFirstName}</span>`)
+              }
+                if (data.responseJSON?.firstNameShort) {
+                    $('#firstName').addClass('error-border')
+                   $('#firstName-error').append(` <span class='error-text'>${data.responseJSON?.firstNameShort}</span>`)
+               }
+             if (data.responseJSON?.requiredLastName) {
+                    $('#lastName').addClass('error-border')
+                    $('#lastName-error').append(` <span class='error-text'>${data.responseJSON?.requiredLastName}</span>`)
+              }
+                if (data.responseJSON?.lastNameShort) {
+                    $('#lastName').addClass('error-border')
+                    $('#lastName-error').append(` <span class='error-text'>${data.responseJSON?.lastNameShort}</span>`)
+             }
+         }
+      });
+    })
+
+})
+
             /*
             $(document).ready(function () {
 
