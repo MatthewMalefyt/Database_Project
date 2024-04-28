@@ -51,7 +51,7 @@
           lastName,
        }
        $.ajax({
-           url: `http://localhost:8888/users`,
+           url: `http://localhost/submit_post`,
             type: "POST",
          data: data,
           dataType: "json",
@@ -122,7 +122,7 @@
                     }
 
                     $.ajax({
-                        url: 'http://localhost/submit_post',
+                        url: `http://localhost/submit_post`,
                         type: "POST",
                         data: data,
                         dataType: "json",
