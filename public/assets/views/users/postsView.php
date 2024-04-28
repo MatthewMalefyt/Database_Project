@@ -106,10 +106,6 @@ success:
                 });
             })
 
-
-        </script>
-
-<script>
             $(document).ready(function () {
                 $.ajax({
                     url: `http://localhost:8888/users`,
