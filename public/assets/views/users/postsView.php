@@ -39,7 +39,7 @@
         <div id="data-container"></div>
 
         <script>
-
+            /*
             $(document).ready(function () {
 
                 $("#fetch-db").click(function () {
@@ -59,7 +59,7 @@
                     });
                 })
 
-
+                */
 
                 $('#form-id').on('submit', function (e) {
                     e.preventDefault();
@@ -74,7 +74,7 @@
                     }
 
                     $.ajax({
-                        url: 'http://localhost:8888/users',
+                        url: 'http://localhost/submit_post',
                         type: "POST",
                         data: data,
                         dataType: "json",
